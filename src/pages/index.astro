@@ -4,53 +4,26 @@ import Callout from '../components/Callout.astro';
 ---
 
 <Layout title="Laura Seoane ~ Backend Developer">
+	<h1 class="text-gradient">Laura Seoane ~ Backend Developer</h1>
 	<main>
-		<h1 class="text-gradient">Laura Seoane ~ Backend Developer</h1>
-		<p class="instructions">
-			¡Hola!
-			Soy Laura Seoane: madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa.
-
-			Mis referentes son Xena, Leia y mi madre.
-			Soy esa persona que pide la pizza con piña.
-		</p>
-		<ul role="list" class="callout-grid">
-			<Callout
-				title="Test callout"
-				body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor sit amet orci sit amet blandit. Etiam ornare elit ornare tincidunt posuere. Morbi a euismod nisi, volutpat eleifend dolor. Nunc pretium ipsum eget magna viverra, ut fringilla augue convallis. In quis lacus luctus, vestibulum odio non, aliquam ante. Cras sed faucibus tortor. Praesent auctor molestie ante at semper."
-			/>
-			<Callout
-				title="Another callout"
-				body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor sit amet orci sit amet blandit. Etiam ornare elit ornare tincidunt posuere. Morbi a euismod nisi, volutpat eleifend dolor. Nunc pretium ipsum eget magna viverra, ut fringilla augue convallis. In quis lacus luctus, vestibulum odio non, aliquam ante. Cras sed faucibus tortor. Praesent auctor molestie ante at semper."
-			/>
-		</ul>
+		<section>
+			<div class="presentation">
+				<Callout icon="👋" color={1}>¡Hola!&NewLine;Soy Laura Seoane: madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa.&NewLine;&NewLine;Mis referentes son Xena, Leia y mi madre.&NewLine;Soy esa persona que pide la pizza con piña.</Callout>
+				<img class="avatar" alt="" src="../../public/avatar.png"/>
+			</div>
+			<div class="callout-list">
+				<Callout icon="📚" color={2}>Estudié por casualidad la FP de Sistemas Microinformáticos y Redes y rápidamente supe que había encontrado mi camino. Continué con el grado superior en Desarrollo de Aplicaciones Web, que terminó de convencerme de que este era mi sitio.</Callout>
+				<Callout icon="👩‍💻" color={1}>Oficialmente soy Backend Developer pero me gusta meterme un poquito en todos los “fregaos”. Me encantan los debates sobre arquitectura y encuentro el mismo placer en el refactoring que en las croquetas.&NewLine;&NewLine;Vengo de unos años desarrollando en PHP pero actualmente trabajo con JavaScript/TypeScript (en entorno NodeJS).</Callout>
+			</div>
+		</section>
 	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
@@ -59,28 +32,23 @@ import Callout from '../components/Callout.astro';
 		background-size: 400%;
 		background-position: 0;
 	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
+	.presentation {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
 	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.callout-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
+	.callout-list {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		gap: 1rem;
 		padding: 0;
+	}
+	.avatar {
+		flex: 1;
+		max-width: 20%;
+		min-width: 200px;
 	}
 </style>
