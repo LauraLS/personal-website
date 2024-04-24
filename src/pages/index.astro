@@ -4,19 +4,33 @@ import Callout from '../components/Callout.astro';
 ---
 
 <Layout title="Laura Seoane ~ Backend Developer">
-	<h1 class="text-gradient">Laura Seoane ~ Backend Developer</h1>
+	<header>
+		<h1 class="title">Laura Seoane</h1>
+		<h2 class="subtitle">~ Backend Developer ~</h2>
+	</header>
 	<main>
 		<section>
 			<div class="presentation">
-				<Callout icon="👋" color={1}>¡Hola!&NewLine;Soy Laura Seoane: madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa.&NewLine;&NewLine;Mis referentes son Xena, Leia y mi madre.&NewLine;Soy esa persona que pide la pizza con piña.</Callout>
+				<Callout icon="👋" color={1}><p>¡Hola! Soy <strong>Laura Seoane</strong>: madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa.&NewLine;&NewLine;Mis referentes son Xena, Leia y, por supuesto, mi madre.&NewLine;Soy esa persona que pide la pizza con piña.</p></Callout>
 				<img class="avatar" alt="" src="../../public/avatar.png"/>
 			</div>
 			<div class="callout-list">
-				<Callout icon="📚" color={2}>Estudié por casualidad la FP de Sistemas Microinformáticos y Redes y rápidamente supe que había encontrado mi camino. Continué con el grado superior en Desarrollo de Aplicaciones Web, que terminó de convencerme de que este era mi sitio.</Callout>
-				<Callout icon="👩‍💻" color={1}>Oficialmente soy Backend Developer pero me gusta meterme un poquito en todos los “fregaos”. Me encantan los debates sobre arquitectura y encuentro el mismo placer en el refactoring que en las croquetas.&NewLine;&NewLine;Vengo de unos años desarrollando en PHP pero actualmente trabajo con JavaScript/TypeScript (en entorno NodeJS).</Callout>
+				<Callout icon="📚" color={2}><p>Estudié la FP de <strong>Sistemas Microinformáticos y Redes</strong> y rápidamente supe que había encontrado mi camino. Continué con el grado superior en <strong>Desarrollo de Aplicaciones Web</strong>, que terminó de convencerme de que este es mi sitio.</p></Callout>
+				<Callout icon="👩‍💻" color={1}><p>Oficialmente soy <strong>Backend Developer</strong> pero me gusta meterme un poco en todos los “fregaos”. Lo que más disfruto del trabajo es aprender y aplicar técnicas de refactoring, debatir sobre arquitecturas y participar en el desarrollo de producto.&NewLine;&NewLine;Vengo de unos años desarrollando en <strong>PHP</strong> pero actualmente trabajo con <strong>JavaScript/TypeScript</strong> (en entorno NodeJS).</p></Callout>
 			</div>
 		</section>
 	</main>
+	<footer>
+		<div class="social-media">
+			<p>Si quieres saber más, te invito a echar un ojo a mis redes:</p>
+			<ul class="link-list">
+				<li><a href="https://www.linkedin.com/in/seoanelaura"><img alt="LinkedIn" src="linkedin.png"/></a></li>
+				<li><a href="https://twitter.com/_lauseoane"><img alt="Twitter" src="twitter.webp"/></a></li>
+				<li><a href="https://github.com/LauraLS"><img alt="Github" src="github.png"/></a></li>
+				<li><a href="https://codepen.io/lauseoane"><img alt="Codepen" src="codepen.png"/></a></li>
+			</ul>
+		</div>
+	</footer>
 </Layout>
 
 <style>
@@ -25,12 +39,44 @@ import Callout from '../components/Callout.astro';
 		flex-direction: column;
 		gap: 1rem;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0;
+	header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		background-image: url("hero.jpg");
+		background-size: cover;
+		background-position: top;
+		min-height: 20vh;
+		color: var(--accent-darkest);
+	}
+	.social-media {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+		min-height: 100px;
+		padding: 1.5rem;
+	}
+	.link-list {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		column-gap: 3em;
+		row-gap: 1em;
+		list-style: none;
+		flex-wrap: wrap;
+	}
+	.link-list img {
+		display: inline-block;
+		max-width: 2em;
+		max-height: 2em;
+	}
+	.subtitle{
+		opacity: 60%;
+		font-style: italic;
 	}
 	.presentation {
 		display: flex;
@@ -49,6 +95,11 @@ import Callout from '../components/Callout.astro';
 	.avatar {
 		flex: 1;
 		max-width: 20%;
-		min-width: 200px;
+		min-width: 180px;
+	}
+	@media only screen and (max-width:767px) {
+		.presentation {
+			flex-direction: column-reverse;
+		}
 	}
 </style>
