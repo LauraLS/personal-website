@@ -5,8 +5,7 @@ import Callout from '../components/Callout.astro';
 
 <Layout title="Laura Seoane ~ Backend Developer">
 	<header>
-		<h1 class="title">Laura Seoane</h1>
-		<h2 class="subtitle">~ Backend Developer ~</h2>
+		<img class="logo" alt="logo: Laura Seoane" src="logo.png"/>
 	</header>
 	<main>
 		<section>
@@ -41,15 +40,15 @@ import Callout from '../components/Callout.astro';
 	}
 	header {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		background-image: url("hero.webp");
-		background-size: cover;
-		background-position: top;
-		min-height: 20vh;
-		color: var(--accent-darkest);
+		height: 100px;
+		background-color: #f3f4f8;
+
+		.logo {
+			height: 100%;
+		}
 	}
 	.social-media {
 		display: flex;
