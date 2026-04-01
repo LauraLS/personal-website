@@ -21,7 +21,7 @@ Cosillas que me interesan y de las que podría gustarme escribir:
 
 - 👩‍💻 Reflexiones sobre el **mundo del software**
 - ⚒️ Trucos y herramientas de **desarrollo y tooling** (mi bloc de notas, vaya)
-- 📚 Reseñas literarias o de cine, recomendaciones...**cualquier cosa del mundo de la cultura***
+- 📚 Reseñas literarias o de cine, recomendaciones...**cualquier cosa del mundo de la cultura**
 - 💡 Y algún que otro tema random que me apetezca compartir
 
 Ni siquiera lo he pensado demasiado. No tengo ningún tipo de pretensión más allá de escribir más de un post.
