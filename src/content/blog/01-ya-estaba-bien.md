@@ -11,7 +11,7 @@ excerpt: "Me ha costado mucho arrancar porque sentía que no tenía nada que com
 
 En lo personal tengo una capacidad sobrehumana de procrastinar pero, en este nuevo mundo que parece dominado por la IA y en este nuestro sector que nos encanta automatizarlo todo, siento que hay habilidades que tenemos que esforzarnos por mantener.
 
-Las relaciones humanas, la lectoescritura, el pensamiento lógico, la paciencia, la creatividad...son músculos que, si no se entrenan, se atrofian. Así que mientras otra gente en distintas crisis de su vida decide apuntarse a *crossfit*, yo he optado por un *workout* basado en pintar, bailar, conocer gente y, finalmente, escribir.
+Las relaciones humanas, la lectura y la escritura, el pensamiento lógico y crítico, la paciencia, la creatividad...son músculos que, si no se entrenan, se atrofian. Así que mientras otra gente en distintas crisis de su vida decide apuntarse a *crossfit*, yo he optado por un *workout* basado en pintar, bailar, conocer gente y, finalmente, escribir.
 
 ## ¿Sobre qué me gustaría escribir?
 
