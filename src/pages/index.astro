@@ -4,9 +4,6 @@ import Callout from '../components/Callout.astro';
 ---
 
 <Layout title="Laura Seoane ~ Backend Developer">
-	<header>
-		<img class="logo" alt="logo: Laura Seoane" src="logo.png"/>
-	</header>
 	<main>
 		<section>
 			<div class="presentation">
@@ -19,17 +16,6 @@ import Callout from '../components/Callout.astro';
 			</div>
 		</section>
 	</main>
-	<footer>
-		<div class="social-media">
-			<p>Si quieres saber más, te invito a echar un ojo a mis redes:</p>
-			<ul class="link-list">
-				<li><a href="https://www.linkedin.com/in/seoanelaura"><img alt="LinkedIn" src="linkedin.svg"/></a></li>
-				<li><a href="https://bsky.app/profile/lauraseoane.es"><img alt="Bluesky" src="bluesky.svg"/></a></li>
-				<li><a href="https://github.com/LauraLS"><img alt="Github" src="github.svg"/></a></li>
-				<li><a href="https://codepen.io/lauseoane"><img alt="Codepen" src="codepen.svg"/></a></li>
-			</ul>
-		</div>
-	</footer>
 </Layout>
 
 <style>
@@ -37,45 +23,6 @@ import Callout from '../components/Callout.astro';
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-	}
-	header {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		height: 100px;
-		background-color: #f3f4f8;
-
-		.logo {
-			height: 100%;
-		}
-	}
-	.social-media {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1em;
-		min-height: 100px;
-		padding: 1.5rem;
-	}
-	.link-list {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		column-gap: 2.5em;
-		row-gap: 1em;
-		list-style: none;
-		flex-wrap: wrap;
-	}
-	.link-list img {
-		display: inline-block;
-		max-width: 2em;
-		max-height: 2em;
-	}
-	.subtitle{
-		opacity: 60%;
-		font-style: italic;
 	}
 	.presentation {
 		display: flex;

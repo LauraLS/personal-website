@@ -1,0 +1,69 @@
+---
+interface Props {
+	title: string;
+	date: Date;
+	cover?: string;
+	slug: string;
+}
+
+const { title, date, cover, slug } = Astro.props;
+const formattedDate = date.toLocaleDateString('es-ES', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<a href={`/blog/${slug}`} class="blog-card">
+	<div class="card-image" style={cover ? `background-image: url(${cover})` : ''}>
+		{!cover && <img class="card-placeholder" src="/favicon.ico" alt="" />}
+	</div>
+	<div class="card-content">
+		<time datetime={date.toISOString()}>{formattedDate}</time>
+		<h2>{title}</h2>
+	</div>
+</a>
+
+<style>
+	.blog-card {
+		display: flex;
+		flex-direction: column;
+		border-radius: 3px;
+		overflow: hidden;
+		text-decoration: none;
+		background-color: var(--accent);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.blog-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	}
+	.card-image {
+		height: 200px;
+		background-size: cover;
+		background-position: center;
+		background-color: var(--accent-darkest);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.card-placeholder {
+		width: 64px;
+		height: 64px;
+		opacity: 1;
+		filter: brightness(0) invert(1);
+	}
+	.card-content {
+		padding: 1.25rem;
+	}
+	.card-content time {
+		font-size: 0.85rem;
+		color: var(--accent-dark);
+		font-family: Noto Sans, Lato, sans-serif;
+	}
+	.card-content h2 {
+		margin-top: 0.5rem;
+		font-size: 1.15rem;
+		color: var(--accent-darkest);
+	}
+</style>
