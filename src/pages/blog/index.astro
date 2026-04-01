@@ -11,16 +11,20 @@ const posts = (await getCollection('blog')).sort(
 <Layout title="Blog ~ Laura Seoane">
 	<main>
 		<h1>Blog</h1>
-		<div class="blog-grid">
-			{posts.map((post) => (
-				<BlogCard
-					title={post.data.title}
-					date={post.data.date}
-					cover={post.data.cover}
-					slug={post.id}
-				/>
-			))}
-		</div>
+		{posts.length > 0 ? (
+			<div class="blog-grid">
+				{posts.map((post) => (
+					<BlogCard
+						title={post.data.title}
+						date={post.data.date}
+						cover={post.data.cover}
+						slug={post.id}
+					/>
+				))}
+			</div>
+		) : (
+			<p class="empty">Aún no hay artículos pero estoy en ello. ¡Vuelve pronto!</p>
+		)}
 	</main>
 </Layout>
 
@@ -28,6 +32,12 @@ const posts = (await getCollection('blog')).sort(
 	h1 {
 		color: var(--accent-darkest);
 		margin-bottom: 2rem;
+	}
+	.empty {
+		text-align: center;
+		color: var(--accent-darkest);
+		font-size: 1.1rem;
+		margin-top: 2rem;
 	}
 	.blog-grid {
 		display: grid;
