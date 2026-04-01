@@ -6,6 +6,28 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+
+const cleanMdCharacters = (text: string) => {
+	return text
+		.replace(/^#+\s.*$/gm, '')        // headings
+		.replace(/!\[.*?]\(.*?\)/g, '')   // images
+		.replace(/\[([^\]]+)]\(.*?\)/g, '$1') // links → text
+		.replace(/(`{1,3}).*?\1/gs, '')    // inline/block code
+		.replace(/[*_]{1,3}(.+?)[*_]{1,3}/g, '$1') // bold/italic
+		.replace(/~~(.+?)~~/g, '$1')       // strikethrough
+		.replace(/^\s*[-*+]\s/gm, '')      // unordered list markers
+		.replace(/^\s*\d+\.\s/gm, '')      // ordered list markers
+		.replace(/^>\s?/gm, '')            // blockquotes
+		.replace(/---+/g, '')              // horizontal rules
+		.replace(/\n{2,}/g, ' ')           // collapse newlines
+		.trim();
+}
+
+const getExcerpt = (post: typeof posts[number]): string => {
+	if (post.data.excerpt) return cleanMdCharacters(post.data.excerpt);
+	return cleanMdCharacters(post.body ?? '');
+}
 ---
 
 <Layout title="Blog ~ Laura Seoane">
@@ -19,6 +41,7 @@ const posts = (await getCollection('blog')).sort(
 						date={post.data.date}
 						cover={post.data.cover}
 						slug={post.id}
+						excerpt={getExcerpt(post)}
 					/>
 				))}
 			</div>
@@ -40,16 +63,14 @@ const posts = (await getCollection('blog')).sort(
 		margin-top: 2rem;
 	}
 	.blog-grid {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: center;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
 		width: 100%;
 	}
 	@media only screen and (max-width: 767px) {
 		.blog-grid {
-			justify-content: center;
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

@@ -4,9 +4,10 @@ interface Props {
 	date: Date;
 	cover?: string;
 	slug: string;
+	excerpt?: string;
 }
 
-const { title, date, cover, slug } = Astro.props;
+const { title, date, cover, slug, excerpt } = Astro.props;
 const formattedDate = date.toLocaleDateString('es-ES', {
 	year: 'numeric',
 	month: 'long',
@@ -21,6 +22,7 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 	<div class="card-content">
 		<time datetime={date.toISOString()}>{formattedDate}</time>
 		<h2>{title}</h2>
+		{excerpt && <p class="card-excerpt">{excerpt}</p>}
 	</div>
 </a>
 
@@ -28,7 +30,7 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 	.blog-card {
 		display: flex;
 		flex-direction: column;
-		width: 270px;
+		width: 100%;
 		border-radius: 3px;
 		overflow: hidden;
 		text-decoration: none;
@@ -66,5 +68,16 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 		margin-top: 0.5rem;
 		font-size: 1.15rem;
 		color: var(--accent-darkest);
+	}
+	.card-excerpt {
+		margin-top: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--accent-darkest);
+		opacity: 0.7;
+		line-height: 1.4;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 </style>
