@@ -40,8 +40,11 @@ const posts = (await getCollection('blog')).sort(
 		margin-top: 2rem;
 	}
 	.blog-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: center;
 		gap: 1.5rem;
+		width: 100%;
 	}
 </style>
