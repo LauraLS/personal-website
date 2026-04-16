@@ -109,12 +109,14 @@ function isActive(href: string) {
 </style>
 
 <script>
-	const hamburger = document.querySelector('.hamburger');
-	const navLinks = document.querySelector('.nav-links');
+	document.addEventListener('astro:page-load', () => {
+		const hamburger = document.querySelector('.hamburger');
+		const navLinks = document.querySelector('.nav-links');
 
-	hamburger?.addEventListener('click', () => {
-		navLinks?.classList.toggle('open');
-		const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-		hamburger.setAttribute('aria-expanded', String(!expanded));
+		hamburger?.addEventListener('click', () => {
+			navLinks?.classList.toggle('open');
+			const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+			hamburger.setAttribute('aria-expanded', String(!expanded));
+		});
 	});
 </script>
