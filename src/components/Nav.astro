@@ -1,4 +1,10 @@
 ---
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+	if (href === '/') return currentPath === '/';
+	return currentPath.startsWith(href);
+}
 ---
 <nav class="nav">
 	<div class="nav-container">
@@ -11,25 +17,28 @@
 			<span class="hamburger-line"></span>
 		</button>
 		<ul class="nav-links">
-			<li><a href="/">Inicio</a></li>
-			<li><a href="/blog">Blog</a></li>
+			<li><a href="/" class:list={[{ active: isActive('/') }]}>Inicio</a></li>
+			<li><a href="/blog" class:list={[{ active: isActive('/blog') }]}>Blog</a></li>
 		</ul>
 	</div>
 </nav>
 
 <style>
 	.nav {
-		background-color: #f3f4f8;
-		height: 100px;
+		background-color: #FDFBFE;
+		box-shadow: 0 2px 8px #9d65cb12;
 	}
 	.nav-container {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 100%;
-		max-width: 900px;
+		max-width: 1000px;
 		margin: 0 auto;
 		padding: 0 1rem;
+		height: 100px;
+	}
+	.nav-logo {
+		display: flex;
 	}
 	.nav-logo img {
 		height: 80px;
@@ -37,37 +46,41 @@
 	.nav-links {
 		display: flex;
 		list-style: none;
-		gap: 2rem;
+		gap: 32px;
 	}
 	.nav-links a {
 		text-decoration: none;
-		color: var(--accent-darkest);
-		font-family: Noto Sans, Lato, sans-serif;
-		font-weight: 600;
-		font-size: 1.1rem;
+		color: #5D5F8A;
+		font-family: 'Noto Sans', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
 	}
-	.nav-links a:hover {
-		color: var(--accent-dark);
+	.nav-links a:hover,
+	.nav-links a.active {
+		color: #9d65cb;
 	}
 	.hamburger {
 		display: none;
 		background: none;
 		border: none;
 		cursor: pointer;
-		padding: 0.5rem;
+		padding: 0;
 		flex-direction: column;
 		gap: 5px;
 	}
 	.hamburger-line {
 		display: block;
-		width: 25px;
+		width: 28px;
 		height: 3px;
-		background-color: var(--accent-darkest);
+		background-color: #4A4C74;
 		border-radius: 2px;
 		transition: transform 0.3s, opacity 0.3s;
 	}
 
 	@media only screen and (max-width: 767px) {
+		.nav-container {
+			padding: 0 24px;
+		}
 		.hamburger {
 			display: flex;
 		}
@@ -77,12 +90,12 @@
 			top: 100px;
 			left: 0;
 			right: 0;
-			background-color: #f3f4f8;
+			background-color: #FDFBFE;
 			flex-direction: column;
-			padding: 1rem 2rem;
+			padding: 1rem 24px;
 			gap: 1rem;
 			z-index: 10;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 4px 8px #9d65cb12;
 		}
 		.nav-links.open {
 			display: flex;
