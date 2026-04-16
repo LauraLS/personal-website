@@ -16,7 +16,7 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 ---
 
 <a href={`/blog/${slug}`} class="blog-card">
-	<div class="card-image" style={cover ? `background-image: url(${cover})` : ''}>
+	<div class="card-image" style={cover ? `background-image: url(${cover})` : ''} transition:name={`cover-${slug}`}>
 		{!cover && <img class="card-placeholder" src="/favicon.ico" alt="" />}
 	</div>
 	<div class="card-content">
