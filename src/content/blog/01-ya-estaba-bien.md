@@ -1,7 +1,7 @@
 ---
 title: "Ya estaba bien"
 date: 2026-04-01
-cover: "https://cdn.lauraseoane.es/blog/post-ya-estaba-bien.png"
+cover: "https://cdn.lauraseoane.es/blog/post-ya-estaba-bien.webp"
 excerpt: "Me ha costado mucho arrancar porque sentía que no tenía nada que compartir. Nada que aportar. Nada que fuera ***útil***. Voy a deshacerme de ese lastre y escribir para mi. Si a alguien le interesa, le aporta o le ayuda, ¡fantástico!"
 ---
 
