@@ -48,9 +48,16 @@ function isActive(href: string) {
 	.nav-links {
 		display: flex;
 		list-style: none;
-		gap: 32px;
+		gap: 0;
+		height: 100%;
+	}
+	.nav-links li {
+		display: flex;
 	}
 	.nav-links a {
+		display: flex;
+		align-items: center;
+		padding: 0 16px;
 		text-decoration: none;
 		color: #5D5F8A;
 		font-family: 'Noto Sans', sans-serif;
@@ -94,10 +101,16 @@ function isActive(href: string) {
 			right: 0;
 			background-color: #FDFBFE;
 			flex-direction: column;
-			padding: 1rem 24px;
-			gap: 1rem;
+			padding: 0;
+			gap: 0;
 			z-index: 10;
 			box-shadow: 0 4px 8px #9d65cb12;
+			height: auto;
+		}
+		.nav-links a {
+			padding: 1rem 24px;
+			width: 100%;
+			box-sizing: border-box;
 		}
 		.nav-links.open {
 			display: flex;
