@@ -5,55 +5,70 @@ interface Props {
 	color?: number;
 }
 
-const { icon, title, color } = Astro.props;
-const backgroundColor = color === 2 ? "#faeaf3" : "#f7f0fc"
+const { icon, title, color = 1 } = Astro.props;
 ---
 
-<article class="callout">
-	<div>
-		{title &&
-			<h2>
-				<span class="callout-icon">{icon}</span> {title}
-			</h2>
-		}
-		<div class="callout-body">
-			{!title && <span class="callout-icon">{icon}</span>}<slot></slot>
-		</div>
+<article class={`callout callout--${color}`}>
+	<div class="callout-header">
+		{icon && <span class="callout-icon">{icon}</span>}
+		{title && <h2>{title}</h2>}
+	</div>
+	<div class="callout-body">
+		<slot />
 	</div>
 </article>
-<style define:vars={{ backgroundColor }}>
+
+<style>
 	.callout {
-		list-style: none;
 		display: flex;
-		padding: calc(1.5rem - 1px);
-		background-color: var(--backgroundColor);
-		border-radius: 3px;
-		min-width: 220px;
-		height: fit-content;
-		flex: 2;
+		flex-direction: column;
+		gap: clamp(16px, 2vw, 20px);
+		border-radius: 16px;
+		padding: clamp(24px, 3.5vw, 36px);
 	}
-	.callout > div {
-		width: 100%;
-		text-decoration: none;
-		border-radius: 3px;
-		color: black;
-		opacity: 0.8;
-	}
-	.callout-body {
+
+	.callout-header {
 		display: flex;
-		white-space: pre-wrap;
+		flex-direction: row;
+		align-items: center;
+		gap: clamp(10px, 1.2vw, 12px);
 	}
+
 	.callout-icon {
-		padding: 0 14px 0 0;
-		font-size: 2rem;
 		font-family: 'Noto Emoji', sans-serif;
+		font-size: clamp(24px, 3vw, 32px);
+		line-height: 1;
 	}
+
 	h2 {
+		font-family: 'Noto Sans', sans-serif;
+		font-size: clamp(20px, 2.2vw, 24px);
+		font-weight: 700;
+		line-height: 1.2;
 		margin: 0;
-		font-size: 1.25rem;
 	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
+
+	.callout-body {
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: clamp(13px, 1.4vw, 15px);
+		line-height: 1.7;
 	}
+
+	/* Color 1: Light purple */
+	.callout--1 { background-color: var(--accent); }
+	.callout--1 .callout-icon { color: var(--accent-darkest); }
+	.callout--1 h2 { color: var(--accent-darkest); }
+	.callout--1 .callout-body { color: var(--text-secondary); }
+
+	/* Color 2: Dark */
+	.callout--2 { background-color: var(--accent-darkest); }
+	.callout--2 .callout-icon { color: var(--text-inverse); }
+	.callout--2 h2 { color: var(--text-inverse); }
+	.callout--2 .callout-body { color: var(--text-on-dark); }
+
+	/* Color 3: Pink */
+	.callout--3 { background-color: var(--accent-light); }
+	.callout--3 .callout-icon { color: var(--accent-darkest); }
+	.callout--3 h2 { color: var(--accent-darkest); }
+	.callout--3 .callout-body { color: var(--text-secondary); }
 </style>

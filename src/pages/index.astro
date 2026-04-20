@@ -1,51 +1,141 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Callout from '../components/Callout.astro';
+
+const TECH_TAGS = ["PHP", "JavaScript", "TypeScript", "CSS", "MySQL", "MongoDB", "Redis", "Docker", "Clean Architecture"]
 ---
 
 <Layout title="Laura Seoane ~ Backend Developer">
 	<main>
-		<section>
-			<div class="presentation">
-				<Callout icon="👋" color={1}><p>¡Hola! Soy <strong>Laura Seoane</strong>: madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa.&NewLine;&NewLine;Mis referentes son Xena, Leia y, por supuesto, mi madre.&NewLine;Soy esa persona que pide la pizza con piña.</p></Callout>
-				<img class="avatar" alt="" src="/avatar.webp"/>
+		<section class="hero">
+			<img class="avatar" src="/avatar.webp" alt="" />
+			<div class="hero-text">
+				<span class="hero-tag">Backend Developer</span>
+				<h1>Laura Seoane</h1>
+				<div class="tech-tags">
+					{TECH_TAGS.map(tag => {
+						return <span class="tag">{tag}</span>
+					})}
+					<span class="tag tag--highlight">JS/TS + Node · actual</span>
+				</div>
 			</div>
-			<div class="callout-list">
-				<Callout icon="📚" color={2}><p>Estudié la FP de <strong>Sistemas Microinformáticos y Redes</strong> y rápidamente supe que había encontrado mi camino. Continué con el grado superior en <strong>Desarrollo de Aplicaciones Web</strong>, que terminó de convencerme de que este es mi sitio.</p></Callout>
-				<Callout icon="👩‍💻" color={1}><p>Oficialmente soy <strong>Backend Developer</strong> pero me gusta meterme un poco en todos los “fregaos”. Lo que más disfruto del trabajo es aprender y aplicar técnicas de refactoring, debatir sobre arquitecturas y participar en el desarrollo de producto.&NewLine;&NewLine;Vengo de unos años desarrollando en <strong>PHP</strong> pero actualmente trabajo con <strong>JavaScript/TypeScript</strong> (en entorno NodeJS).</p></Callout>
+		</section>
+
+		<section class="section-callouts">
+			<div class="section-callouts-row">
+				<Callout icon="👋" title="Sobre mí" color={1}>
+					<p>Madrileña con raíces gallegas, amante del mundo de la comedia, el cine y los juegos de mesa. Mis referentes son Xena, Leia y, por supuesto, mi madre. Soy esa persona que pide la pizza con piña.</p>
+				</Callout>
+				<Callout icon="📚" title="Formación" color={2}>
+					<p>Estudié la FP de Sistemas Microinformáticos y Redes y rápidamente supe que había encontrado mi camino. Continué con el grado superior en Desarrollo de Aplicaciones Web, que terminó de convencerme de que este es mi sitio.</p>
+				</Callout>
 			</div>
+			<Callout icon="👩‍💻" title="Perfil profesional" color={3}>
+				<p>Oficialmente soy Backend Developer pero me gusta meterme un poco en todos los "fregaos". Lo que más disfruto del trabajo es aprender y aplicar técnicas de refactoring, debatir sobre arquitecturas y participar en el desarrollo de producto.</p>
+			</Callout>
 		</section>
 	</main>
 </Layout>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+	main {
+		margin: 0 auto;
+		padding: 0 clamp(16px, 3vw, 24px);
+		max-width: 1000px;
+		width: 100%;
+		box-sizing: border-box;
 	}
-	.presentation {
+
+	/* Hero — fluid via flex-wrap + clamp(). row-reverse keeps avatar right on wide,
+	   and on top once wrapped (avatar is first in the DOM). */
+	.hero {
 		display: flex;
+		flex-direction: row-reverse;
 		flex-wrap: wrap;
-		gap: 1rem;
 		align-items: center;
 		justify-content: center;
+		gap: clamp(24px, 4vw, 60px);
+		padding: clamp(32px, 6vw, 80px) 0;
 	}
-	.callout-list {
+
+	.hero-text {
 		display: flex;
 		flex-direction: column;
+		gap: clamp(16px, 2vw, 24px);
+		flex: 1 1 320px;
+	}
+
+	.hero-tag {
+		display: inline-block;
+		width: fit-content;
+		background-color: var(--accent);
+		color: var(--accent-dark);
+		font-family: 'Noto Sans', sans-serif;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		padding: 6px 16px;
+		border-radius: 9999px;
+	}
+
+	h1 {
+		font-family: 'Noto Sans', sans-serif;
+		font-size: clamp(36px, 5.5vw, 56px);
+		font-weight: 700;
+		color: var(--accent-darkest);
+		line-height: 1.1;
+		text-align: left;
+		margin: 0;
+	}
+
+	.tech-tags {
+		display: flex;
 		flex-wrap: wrap;
-		gap: 1rem;
-		padding: 0;
+		gap: 10px;
 	}
+
+	.tag {
+		background-color: var(--accent);
+		color: var(--accent-darkest);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 13px;
+		font-weight: 500;
+		padding: 8px 16px;
+		border-radius: 9999px;
+	}
+
+	.tag--highlight {
+		background-color: var(--accent-dark);
+		color: var(--text-inverse);
+	}
+
 	.avatar {
-		max-width: 20%;
-		min-width: 180px;
-		aspect-ratio: 1/1;
+		width: clamp(140px, 20vw, 180px);
+		height: clamp(140px, 20vw, 180px);
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
 	}
-	@media only screen and (max-width:767px) {
-		.presentation {
-			flex-direction: column-reverse;
-		}
+
+	/* Bento — callout row wraps naturally when cards can't sit side by side */
+	.section-callouts {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(20px, 2.5vw, 32px);
+		padding: clamp(20px, 3vw, 40px) 0 clamp(40px, 4.5vw, 60px);
 	}
+
+	.section-callouts-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: clamp(20px, 2vw, 24px);
+	}
+
+	.section-callouts-row > :global(article) {
+		flex: 1 1 260px;
+	}
+
+	@media only screen and (max-width: 767px) {
+		.tech-tags { justify-content: center; }
+    }
 </style>
